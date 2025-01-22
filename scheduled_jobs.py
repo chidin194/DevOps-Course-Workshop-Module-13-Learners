@@ -35,6 +35,7 @@ def process_orders(app):
         )
         
         app.logger.info(f"Response from endpoint: {response.status_code}: {response.text}")
+        app.logger.info(f"Current order: {order.product} - {order.customer} - {order.date_placed.isoformat()}")
 
         response.raise_for_status()
 
