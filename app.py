@@ -1,3 +1,32 @@
+from azure.monitor.opentelemetry import configure_azure_monitor
+
+# Configure Azure monitor collection telemetry pipeline
+configure_azure_monitor()
+
+# Import Flask after running configure_azure_monitor()
+import flask
+
+app = flask.Flask(__name__)
+
+
+@app.route("/")
+def test():
+    return "Test flask request"
+
+
+@app.route("/exception")
+def exception():
+    raise Exception("Hit an exception")
+
+@app.route("/ignore")
+def ignore():
+    return "Request received but not tracked."
+
+
+if __name__ == "__main__":
+    app.run(host="localhost", port=8080)
+
+
 from flask import Flask, render_template, request
 from datetime import datetime, timezone
 
