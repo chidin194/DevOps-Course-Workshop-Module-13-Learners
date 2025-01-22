@@ -1,7 +1,9 @@
 from azure.monitor.opentelemetry import configure_azure_monitor
+import logging
 
-# Configure Azure monitor collection telemetry pipeline
+logging.basicConfig(level=logging.INFO)
 configure_azure_monitor()
+
 
 # Import Flask after running configure_azure_monitor()
 import flask
